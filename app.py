@@ -28,7 +28,7 @@ if uploaded_file is not None:
     analyze_button = st.button("Analyze Meal")
 
     if analyze_button:
-    with st.spinner("Analyzing your plate..."):
+     with st.spinner("Analyzing your plate..."):
         try:
             model = genai.GenerativeModel("gemini-2.5-flash")
 
