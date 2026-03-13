@@ -28,10 +28,17 @@ if uploaded_file is not None:
     analyze_button = st.button("Analyze Meal")
 
     if analyze_button:
-        with st.spinner("Analyzing your plate..."):
-            try:
-                # Using Gemini 2.5 Flash for multimodal analysis
-                model = genai.GenerativeModel("gemini-2.5-flash")
+    with st.spinner("Analyzing your plate..."):
+        try:
+            model = genai.GenerativeModel("gemini-2.5-flash")
+
+            response = model.generate_content([prompt, image])
+
+            st.markdown("### 🍽 Analysis")
+            st.markdown(response.text)
+
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
                 
                 # Concise English prompt
                 prompt = """
